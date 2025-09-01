@@ -29,8 +29,17 @@ const DiaryPage: React.FC = () => {
   };
 
   const goToNext = () => {
-    const nextDate = addDays(currentDate, 1);
-    navigate(`/diary/${formatDate(nextDate)}`);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const checkDate = new Date(currentDate);
+    checkDate.setHours(0, 0, 0, 0);
+
+    // Only navigate forward if not already at today
+    if (checkDate < today) {
+      const nextDate = addDays(currentDate, 1);
+      navigate(`/diary/${formatDate(nextDate)}`);
+    }
   };
 
   const goHome = () => {
@@ -284,9 +293,12 @@ const DiaryPage: React.FC = () => {
 
               <button
                 onClick={goToNext}
-                className="flex items-center space-x-2 bg-pink-200 hover:bg-pink-300 
-                           text-pink-800 px-4 py-2 rounded-full transition-all duration-200 
-                           group hover:shadow-lg"
+                disabled={isToday}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-200 group 
+                  ${isToday 
+                    ? "bg-gray-300 text-gray-500 cursor-not-allowed" 
+                    : "bg-pink-200 hover:bg-pink-300 text-pink-800 hover:shadow-lg"
+                  }`}
               >
                 <span className="font-['Dancing_Script'] font-medium">Next</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
