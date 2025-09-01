@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Satisfy&family=Great+Vibes&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #FFE5E5 0%, #FFF0F5 50%, #FFE5E5 100%);
+    min-height: 100vh;
+    font-family: 'Dancing Script', cursive;
+  }
+}
+
+@layer utilities {
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+      opacity: 0.1;
+    }
+    25% {
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateY(-20px) rotate(180deg);
+      opacity: 0.5;
+    }
+    75% {
+      opacity: 0.3;
+    }
+  }
+  
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-heart {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  
+  .animate-pulse-heart {
+    animation: pulse-heart 2s ease-in-out infinite;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease-out;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFE5E5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFB6C1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF69B4;
+}
+
+/* Paper texture effect */
+.paper-texture {
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+/* Handwritten text effect */
+.handwritten {
+  font-family: 'Dancing Script', cursive;
+  letter-spacing: 0.5px;
+}
